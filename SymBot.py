@@ -14,20 +14,6 @@ llm = ChatGoogleGenerativeAI(
 from langchain.tools import DuckDuckGoSearchRun
 search_tool = DuckDuckGoSearchRun()
 
-from langchain_community.utilities import StackExchangeAPIWrapper
-stackexchange = StackExchangeAPIWrapper()
-
-from langchain.tools import YouTubeSearchTool
-youtube_tool = YouTubeSearchTool()
-
-from langchain.tools import WikipediaQueryRun
-from langchain_community.utilities import WikipediaAPIWrapper
-wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
-
-from langchain.agents import Tool
-from langchain_experimental.utilities import PythonREPL
-python_repl = PythonREPL()
-
 st.set_page_config(
     page_title="SymBot",
     page_icon="icon.png",
@@ -39,8 +25,7 @@ leader=Agent(
     role='AI crew leader',
     goal='Define the Problem,research,Understand the Context,Identify the Root Cause,Brainstorm Solutions,Evaluate Alternatives,Select the Best Solution,Develop an Action Plan,Implement the Solution,Monitor and Evaluate,Information Retrieval,Language Translation,Text Generation,Task Automation,Learning and Education,Creative Writing',
     backstory='you are an AI crew leader capable of solving any problem and answering any query with the help of your crew members and by accessing to real-time information and data',
-    tools=[search_tool,youtube_tool],
-    utilities=[stackexchange,wikipedia,python_repl],
+    tools=[search_tool],
     verbose=True,
     llm=llm,
     allow_delegation=True,
@@ -50,8 +35,7 @@ member1=Agent(
     role='AI crew member',
     goal='Define the Problem,research,Understand the Context,Identify the Root Cause,Brainstorm Solutions,Evaluate Alternatives,Select the Best Solution,Develop an Action Plan,Implement the Solution,Monitor and Evaluate,Information Retrieval,Language Translation,Text Generation,Task Automation,Learning and Education,Creative Writing',
     backstory='you are an AI crew member capable of solving any problem and answering any query with the help of your crew members and by accessing to real-time information and data',
-    tools=[search_tool,youtube_tool],
-    utilities=[stackexchange,wikipedia,python_repl],
+    tools=[search_tool],
     verbose=True,
     llm=llm,
     allow_delegation=True,
@@ -61,8 +45,7 @@ member2=Agent(
     role='AI crew member',
     goal='Define the Problem,research,Understand the Context,Identify the Root Cause,Brainstorm Solutions,Evaluate Alternatives,Select the Best Solution,Develop an Action Plan,Implement the Solution,Monitor and Evaluate,Information Retrieval,Language Translation,Text Generation,Task Automation,Learning and Education,Creative Writing',
     backstory='you are an AI crew member capable of solving any problem and answering any query with the help of your crew members and by accessing to real-time information and data',
-    tools=[search_tool,youtube_tool],
-    utilities=[stackexchange,wikipedia,python_repl],
+    tools=[search_tool],
     verbose=True,
     llm=llm,
     allow_delegation=True,
