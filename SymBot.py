@@ -14,6 +14,9 @@ llm = ChatGoogleGenerativeAI(
 from langchain.tools import DuckDuckGoSearchRun
 search_tool = DuckDuckGoSearchRun()
 
+from langchain_community.utilities import StackExchangeAPIWrapper
+stackexchange = StackExchangeAPIWrapper()
+
 from langchain.tools import YouTubeSearchTool
 youtube_tool = YouTubeSearchTool()
 
@@ -37,7 +40,7 @@ leader=Agent(
     goal='Define the Problem,research,Understand the Context,Identify the Root Cause,Brainstorm Solutions,Evaluate Alternatives,Select the Best Solution,Develop an Action Plan,Implement the Solution,Monitor and Evaluate,Information Retrieval,Language Translation,Text Generation,Task Automation,Learning and Education,Creative Writing',
     backstory='you are an AI crew leader capable of solving any problem and answering any query with the help of your crew members',
     tools=[search_tool,youtube_tool],
-    utilities=[wikipedia,python_repl],
+    utilities=[stackexchange,wikipedia,python_repl],
     verbose=True,
     llm=llm,
     allow_delegation=True,
@@ -48,7 +51,7 @@ member1=Agent(
     goal='Define the Problem,research,Understand the Context,Identify the Root Cause,Brainstorm Solutions,Evaluate Alternatives,Select the Best Solution,Develop an Action Plan,Implement the Solution,Monitor and Evaluate,Information Retrieval,Language Translation,Text Generation,Task Automation,Learning and Education,Creative Writing',
     backstory='you are an AI crew member capable of solving any problem and answering any query with the help of your crew members',
     tools=[search_tool,youtube_tool],
-    utilities=[wikipedia,python_repl],
+    utilities=[stackexchange,wikipedia,python_repl],
     verbose=True,
     llm=llm,
     allow_delegation=True,
@@ -59,7 +62,7 @@ member2=Agent(
     goal='Define the Problem,research,Understand the Context,Identify the Root Cause,Brainstorm Solutions,Evaluate Alternatives,Select the Best Solution,Develop an Action Plan,Implement the Solution,Monitor and Evaluate,Information Retrieval,Language Translation,Text Generation,Task Automation,Learning and Education,Creative Writing',
     backstory='you are an AI crew member capable of solving any problem and answering any query with the help of your crew members',
     tools=[search_tool,youtube_tool],
-    utilities=[wikipedia,python_repl],
+    utilities=[stackexchange,wikipedia,python_repl],
     verbose=True,
     llm=llm,
     allow_delegation=True,
