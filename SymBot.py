@@ -8,7 +8,7 @@ from crewai import Agent, Task, Process, Crew
 from langchain_google_genai import ChatGoogleGenerativeAI
 api_gemini = os.environ.get("GEMINI-API-KEY")
 llm = ChatGoogleGenerativeAI(
-    model="gemini-pro", verbose=True, temperature=0.1, google_api_key="AIzaSyDtNBdC7RVR3YkOPflbPHG6Ph5W3c92eFA"
+    model="gemini-pro", verbose=True, temperature=0.1, google_api_key="YOUR_API_KEY"
 )
 
 from langchain.tools import DuckDuckGoSearchRun
@@ -43,14 +43,13 @@ leader=Agent(
     utilities=[stackexchange,wikipedia,python_repl],
     verbose=True,
     llm=llm,
-    allow_delegation=True,
+    allow_delegation=False,
 )
 
 member1=Agent(
     role='AI crew member',
     goal='Define the Problem,research,Understand the Context,Identify the Root Cause,Brainstorm Solutions,Evaluate Alternatives,Select the Best Solution,Develop an Action Plan,Implement the Solution,Monitor and Evaluate,Information Retrieval,Language Translation,Text Generation,Task Automation,Learning and Education,Creative Writing',
     backstory='you are an AI crew member capable of solving any problem and answering any query with the help of your crew members and by accessing to real-time information and data',
-    tools=[search_tool,youtube_tool],
     utilities=[stackexchange,wikipedia,python_repl],
     verbose=True,
     llm=llm,
@@ -61,7 +60,6 @@ member2=Agent(
     role='AI crew member',
     goal='Define the Problem,research,Understand the Context,Identify the Root Cause,Brainstorm Solutions,Evaluate Alternatives,Select the Best Solution,Develop an Action Plan,Implement the Solution,Monitor and Evaluate,Information Retrieval,Language Translation,Text Generation,Task Automation,Learning and Education,Creative Writing',
     backstory='you are an AI crew member capable of solving any problem and answering any query with the help of your crew members and by accessing to real-time information and data',
-    tools=[search_tool,youtube_tool],
     utilities=[stackexchange,wikipedia,python_repl],
     verbose=True,
     llm=llm,
