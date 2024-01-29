@@ -6,7 +6,7 @@ import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 api_gemini = os.environ.get("GEMINI-API-KEY")
 llm = ChatGoogleGenerativeAI(
-    model="gemini-pro", verbose=True, temperature=0.1, google_api_key="AIzaSyDtNBdC7RVR3YkOPflbPHG6Ph5W3c92eFA"
+    model="gemini-pro", verbose=True, temperature=0.1, google_api_key="YOUR_API_KEY"
 )
 
 from langchain.tools import DuckDuckGoSearchRun
